@@ -1,9 +1,10 @@
-import { useSelector } from 'react-redux';
-import type { RootState } from '../app/store';
+import { User } from "../features/users/userSlice";
 
-export default function Tablero() {
-  const user = useSelector((state: RootState) => state.user.user);
+interface TableroProps {
+  user: User;
+}
 
+export default function Tablero({ user }: TableroProps) {
   return (
     <div className='d-flex'>
       <p className='fw-bold m-4'>{user.name}</p>

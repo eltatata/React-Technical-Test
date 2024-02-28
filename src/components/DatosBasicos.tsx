@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { saveChanges } from '../features/users/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '../app/store';
+import { User } from "../features/users/userSlice";
 
-export default function DatosBasicos() {
-  const dispatch = useDispatch();
-  const user = useSelector((state: RootState) => state.user.user);
+interface DatosBasicosProps {
+  user: User;
+  onSaveChanges: (name: string, rol: string, specialty: string) => void;
+}
 
+export default function DatosBasicos({ user, onSaveChanges }: DatosBasicosProps) {
   const [name, setName] = useState<string>(user.name);
   const [rol, setRol] = useState<string>(user.rol);
   const [specialty, setSpecialty] = useState<string>(user.specialty);
@@ -19,7 +19,7 @@ export default function DatosBasicos() {
       return;
     }
 
-    dispatch(saveChanges({ name, rol, specialty }));
+    onSaveChanges(name, rol, specialty);
   };
 
   return (
