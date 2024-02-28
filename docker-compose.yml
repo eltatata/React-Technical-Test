@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  my-react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - "8080:8080"
