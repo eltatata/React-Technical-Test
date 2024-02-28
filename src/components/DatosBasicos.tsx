@@ -14,7 +14,7 @@ export default function DatosBasicos({ user, onSaveChanges }: DatosBasicosProps)
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!name || !rol || !specialty) {
+    if (!name.trim() || !rol || !specialty) {
       alert("Por favor, complete todos los campos.");
       return;
     }
